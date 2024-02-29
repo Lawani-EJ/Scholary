@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholarship Application Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="" type="image/x-icon">
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to the Scholarship Application Form</h1>
+    </header>
+
+    <form>
+        <h2>Enter Your Personal Details</h2>
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" name="firstName" required>
+
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" name="lastName" required>
+
+        <label for="age">Age Range</label>
+        <select id="age" name="age" required>
+            <option value="18-24">18-24</option>
+            <option value="25-30">25-30</option>
+            <option value="31-35">31-35</option>
+            <option value="36-40">36-40</option>
+          
+          
+        </select>
+
+        <label for="gender">Gender</label>
+        <select id="gender" name="gender" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+
+        <label for="phoneNumber">Phone Number</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber" required>
+
+        <label for="school">School</label>
+        <input type="text" id="school" name="school" required>
+
+        <h2>Enter Your Grades</h2>
+        <label for="englishGrade">English</label>
+        <input type="number" id="englishGrade" name="englishGrade" min="0" max="100" required>
+
+        <label for="mathGrade">Mathematics</label>
+        <input type="number" id="mathGrade" name="mathGrade" min="0" max="100" required>
+
+      <label for="physicsGrade">Physics</label>
+        <input type="number" id="physicsGrade" name="physicsGrade" min="0" max="100" required>
+      
+      
+        <label for="chemGrade">Chemistry</label>
+        <input type="number" id="chemGrade" name="chemGrade" min="0" max="100" required>
+      
+      
+        <label for="csGrade"> Computer-Science</label>
+        <input type="number" id="csGrade" name="csGrade" min="0" max="100" required>
+      
+        <label for="bioGrade">Biology</label>
+        <input type="number" id="bioGrade" name="bioGrade" min="0" max="100" required>
+      
+      
+        <label for="agricGrade">Agric-Science</label>
+        <input type="number" id="agricGrade" name="agricGrade" min="0" max="100" required>
+      
+      
+        <label for="civicGrade">Civic-Education</label>
+        <input type="number" id="civicGrade" name="civicGrade" min="0" max="100" required>
+
+        <a href="#" class="bn11" onclick="submitForm()">Submit</a>
+    </form>
+
+    <script>
+        function submitForm() {
+        }
+    </script>
+</body>
+</html>
