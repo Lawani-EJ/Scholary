@@ -43,6 +43,15 @@
         <label for="school">School</label>
         <input type="text" id="school" name="school" required>
 
+        <label for="country">Country</label>
+<select id="country" name="country" required>
+    <option value="Africa">Africa</option>
+    <option value="Asia">Asia</option>
+    <option value="South America">South America</option>
+    <option value="North America">North America</option>
+    <option value="Rest">Rest of the World</option>
+</select>
+
         <h2>Enter Your Grades</h2>
         <label for="englishGrade">English</label>
         <input type="number" id="englishGrade" name="englishGrade" min="0" max="100" required>
@@ -72,12 +81,9 @@
         <label for="civicGrade">Civic-Education</label>
         <input type="number" id="civicGrade" name="civicGrade" min="0" max="100" required>
 
-        <a href="#" class="bn11" onclick="submitForm()">Submit</a>
+<button type="button" class="bn11" onclick="submitForm()">Submit</button>
     </form>
 
-    <script>
-        function submitForm() {
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
