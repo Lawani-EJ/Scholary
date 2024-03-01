@@ -66,12 +66,17 @@ function onSubjectSelected(selectId) {
 }
 
 
-function submitForm() {
+function submitForm(event) {
+    // Prevent form's default submission behavior
+    event.preventDefault();
+
     const isFormValid = ['firstName', 'lastName', 'phoneNumber', 'school', 'age', 'gender', 'country']
         .every(id => validateField(id, `Please enter your ${id.replace(/([A-Z])/g, ' $1').toLowerCase()}.`));
 
     if (!isFormValid) return;
 
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
     const agePoints = getAgePoints(document.getElementById('age').value);
     const countryPoints = getCountryPoints(document.getElementById('country').value);
     const grades = ['englishGrade', 'mathGrade', 'physicsGrade', 'chemGrade', 'csGrade', 'bioGrade', 'agricGrade', 'civicGrade']
@@ -80,9 +85,13 @@ function submitForm() {
 
     const totalPoints = agePoints + countryPoints + gradePoints;
 
-    if (totalPoints >= 180) {
-        alert('Congratulations! You are eligible for the scholarship.');
-    } else {
-        alert('Unfortunately, you do not meet the scholarship criteria.');
-    }
+    const resultMessage = totalPoints >= 180 ?
+        `Congratulations, ${firstName} ${lastName}! You have scored ${totalPoints} points and are eligible for the scholarship.` :
+        `Unfortunately, ${firstName} ${lastName}, you have only scored ${totalPoints} points and do not meet the scholarship criteria.`;
+
+    alert(resultMessage);
+
+    // Display the result on the webpage
+    document.getElementById('result').textContent = resultMessage;
 }
+
