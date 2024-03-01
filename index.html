@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scholarship Application Form</title>
+    <title>Scholary</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="shortcut icon" href="" type="image/x-icon">
+    <link rel="shortcut icon" href="./diploma.png" type="image/x-icon">
 </head>
 <body>
 
@@ -14,7 +14,7 @@
     </header>
 
     <form>
-        <h2>Enter Your Personal Details</h2>
+        <h1>Enter Your Personal Details</h1>
         <label for="firstName">First Name</label>
         <input type="text" id="firstName" name="firstName" required>
 
@@ -27,7 +27,7 @@
             <option value="25-30">25-30</option>
             <option value="31-35">31-35</option>
             <option value="36-40">36-40</option>
-          
+            <option value="41-100">41 and above</option>
           
         </select>
 
@@ -52,34 +52,96 @@
     <option value="Rest">Rest of the World</option>
 </select>
 
-        <h2>Enter Your Grades</h2>
-        <label for="englishGrade">English</label>
-        <input type="number" id="englishGrade" name="englishGrade" min="0" max="100" required>
+<div class="select_container" id="select_container">
+    <h1>Select Your subjects</h1>
+    <select name="select1" id="select1">
+        <option value="">Select Your Subjects</option>
+        <option value="">English</option>
+        <option value="">Mathematics</option>
+        <option value="">Physics</option>
+        <option value="">Chemistry</option>
+        <option value="">Computer-Science</option>
+        <option value="">Biology</option>
+        <option value="">Agric-Science</option>
+    </select>
 
-        <label for="mathGrade">Mathematics</label>
-        <input type="number" id="mathGrade" name="mathGrade" min="0" max="100" required>
+     <select name="select2" id="select2">
+        <option value="">Select Your Subjects</option>
+        <option value="">English</option>
+        <option value="">Mathematics</option>
+        <option value="">Physics</option>
+        <option value="">Chemistry</option>
+        <option value="">Computer-Science</option>
+        <option value="">Biology</option>
+        <option value="">Agric-Science</option>
+    </select>
 
-      <label for="physicsGrade">Physics</label>
-        <input type="number" id="physicsGrade" name="physicsGrade" min="0" max="100" required>
-      
-      
-        <label for="chemGrade">Chemistry</label>
-        <input type="number" id="chemGrade" name="chemGrade" min="0" max="100" required>
-      
-      
-        <label for="csGrade"> Computer-Science</label>
-        <input type="number" id="csGrade" name="csGrade" min="0" max="100" required>
-      
-        <label for="bioGrade">Biology</label>
-        <input type="number" id="bioGrade" name="bioGrade" min="0" max="100" required>
-      
-      
-        <label for="agricGrade">Agric-Science</label>
-        <input type="number" id="agricGrade" name="agricGrade" min="0" max="100" required>
-      
-      
-        <label for="civicGrade">Civic-Education</label>
-        <input type="number" id="civicGrade" name="civicGrade" min="0" max="100" required>
+    <select name="select3" id="select3">
+        <option value="">Select Your Subjects</option>
+        <option value="">English</option>
+        <option value="">Mathematics</option>
+        <option value="">Physics</option>
+        <option value="">Chemistry</option>
+        <option value="">Computer-Science</option>
+        <option value="">Biology</option>
+        <option value="">Agric-Science</option>
+    </select>
+
+    <select name="select4" id="select4">
+        <option value="">Select Your Subjects</option>
+        <option value="">English</option>
+        <option value="">Mathematics</option>
+        <option value="">Physics</option>
+        <option value="">Chemistry</option>
+        <option value="">Computer-Science</option>
+        <option value="">Biology</option>
+        <option value="">Agric-Science</option>
+    </select>
+
+    <select name="select5" id="select5">
+        <option value="">Select Your Subjects</option>
+        <option value="">English</option>
+        <option value="">Mathematics</option>
+        <option value="">Physics</option>
+        <option value="">Chemistry</option>
+        <option value="">Computer-Science</option>
+        <option value="">Biology</option>
+        <option value="">Agric-Science</option>
+    </select>
+
+    <select name="select6" id="select6">
+        <option value="">Select Your Subjects</option>
+        <option value="">English</option>
+        <option value="">Mathematics</option>
+        <option value="">Physics</option>
+        <option value="">Chemistry</option>
+        <option value="">Computer-Science</option>
+        <option value="">Biology</option>
+        <option value="">Agric-Science</option>
+    </select>
+
+    <select name="select7" id="select7">
+        <option value="">Select Your Subjects</option>
+        <option value="">English</option>
+        <option value="">Mathematics</option>
+        <option value="">Physics</option>
+        <option value="">Chemistry</option>
+        <option value="">Computer-Science</option>
+        <option value="">Biology</option>
+        <option value="">Agric-Science</option>
+    </select>
+
+    <select name="select8" id="select8">
+        <option value="">Select Your Subjects</option>
+        <option value="">English</option>
+        <option value="">Mathematics</option>
+        <option value="">Physics</option>
+        <option value="">Chemistry</option>
+        <option value="">Computer-Science</option>
+        <option value="">Biology</option>
+        <option value="">Agric-Science</option>
+    </select>
+</div>
 
 <button type="button" class="bn11" onclick="submitForm()">Submit</button>
     </form>
