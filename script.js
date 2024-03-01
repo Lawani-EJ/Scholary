@@ -1,7 +1,7 @@
 function validateField(id, errorMessage) {
     const input = document.getElementById(id);
     const isValid = input.value.trim() !== '';
-    input.style.borderColor = isValid ? '' : 'red'; 
+    input.style.borderColor = isValid ? '' : 'red';
     if (!isValid) {
         alert(errorMessage);
     }
@@ -40,6 +40,31 @@ function calculateGradePoints(grades) {
     else if (average >= 40) return 20;
     return 0;
 }
+
+function onSubjectSelected(selectId) {
+    // First, collect all selected values from all dropdowns
+    const allSelects = document.querySelectorAll('select[name^="select"]');
+    const selectedValues = Array.from(allSelects).map(select => select.value);
+
+    // Now, update each select element
+    allSelects.forEach(select => {
+        // Remember the current value for this select
+        const currentValue = select.value;
+        // Get all options for the select, excluding the first placeholder
+        const options = select.querySelectorAll('option:not(:first-child)');
+
+        options.forEach(option => {
+            if (selectedValues.includes(option.value) && currentValue !== option.value) {
+                // If this option is selected in another dropdown, hide or disable it
+                option.disabled = true; // or option.style.display = 'none';
+            } else {
+                // Otherwise, make sure it's available for selection
+                option.disabled = false; // or option.style.display = 'block';
+            }
+        });
+    });
+}
+
 
 function submitForm() {
     const isFormValid = ['firstName', 'lastName', 'phoneNumber', 'school', 'age', 'gender', 'country']
