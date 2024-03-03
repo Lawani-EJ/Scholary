@@ -1,3 +1,7 @@
+let subjects = ['English', 'Mathematics', 'Physics', 'Chemistry', 'Computer-Science', 'Biology', 'Agric-Science', 'Civil-Engineering'];
+
+let selectObj = {};
+
 function validateField(id, errorMessage) {
     const input = document.getElementById(id);
     const isValid = input.value.trim() !== '';
@@ -7,6 +11,35 @@ function validateField(id, errorMessage) {
     }
     return isValid;
 }
+
+function populateSubjects() {
+    let subjectDropdowns = document.querySelectorAll('select[id$="Grade"]');
+    
+    subjectDropdowns.forEach((dropdown) => {
+        subjects.forEach((subject) => {
+            let option = document.createElement('option');
+            option.value = subject;
+            option.textContent = subject;
+            dropdown.appendChild(option);
+        });
+
+        dropdown.addEventListener('change', (e) => {
+            selectObj[e.target.id] = e.target.value;
+
+            subjectDropdowns.forEach((otherDropdown) => {
+                if (otherDropdown !== dropdown) {
+                    let options = otherDropdown.querySelectorAll('option');
+                    options.forEach((option) => {
+                        option.disabled = Object.values(selectObj).includes(option.value);
+                    });
+                }
+            });
+        });
+    });
+
+    console.log('Subject Dropdowns:', subjectDropdowns);
+}
+
 
 function getAgePoints(ageRange) {
     switch (ageRange) {
@@ -34,35 +67,49 @@ function getCountryPoints(country) {
     return points[country] || 0;
 }
 
-function calculateGradePoints(grades) {
+function calculateGradePoints(subjects) {
     const pointsMap = {
-        'A': 90,
-        'B': 80,
-        'C': 70,
-        'D': 60,
-        'E': 50,
-        'F': 0
+        'English': 90,
+        'Mathematics': 80,
+        'Physics': 70,
+        'Chemistry': 60,
+        'Computer-Science': 50,
+        'Biology': 40,
+        'Agric-Science': 30,
+        'Civil-Engineering': 20
     };
 
-    const totalPoints = grades.reduce((acc, val) => acc + pointsMap[val], 0);
+    const totalPoints = subjects.reduce((acc, subject) => {
+        const points = pointsMap[subject] || 0; // Default to 0 if the subject is not in the map
+        console.log(`Subject: ${subject}, Points: ${points}`);
+        return acc + points;
+    }, 0);
+
+    console.log('Total Grade Points:', totalPoints);
     return totalPoints;
 }
 
-function onSubjectSelected(selectedDropdown) {
-    const selectedValue = selectedDropdown.value;
-    const allSelects = document.querySelectorAll('select[name^="select"]');
 
-    allSelects.forEach(select => {
-        const options = select.querySelectorAll('option:not(:first-child)');
+function onSubjectSelected(selectedIndex) {
+    const allSelects = document.querySelectorAll('select[id$="Grade"]');
+    const selectedValue = allSelects[selectedIndex]?.value;
 
-        options.forEach(option => {
-            if (selectedValue !== '' && selectedValue === option.value && selectedDropdown !== select) {
-                option.disabled = true;
-            } else {
-                option.disabled = false;
+    if (selectedValue !== undefined) {
+        allSelects.forEach((select, index) => {
+            if (index !== selectedIndex) {
+                const options = select.querySelectorAll('option:not(:first-child)');
+
+                options.forEach(option => {
+                    option.disabled = false;
+                });
+
+                const selectedOption = select.querySelector(`option[value="${selectedValue}"]`);
+                if (selectedOption) {
+                    selectedOption.disabled = true;
+                }
             }
         });
-    });
+    }
 }
 
 function submitForm(event) {
@@ -77,18 +124,35 @@ function submitForm(event) {
     const lastName = document.getElementById('lastName').value;
     const agePoints = getAgePoints(document.getElementById('age').value);
     const countryPoints = getCountryPoints(document.getElementById('country').value);
-    const grades = ['englishGrade', 'mathGrade', 'physicsGrade', 'chemGrade', 'csGrade', 'bioGrade', 'agricGrade', 'civicGrade', 'civilGrade']
-        .map(id => parseInt(document.getElementById(id).value, 10));
+
+    // Get grades
+    const grades = ['englishGrade', 'mathGrade', 'physicsGrade', 'chemGrade', 'csGrade', 'bioGrade', 'agricGrade', 'civicGrade']
+        .map(id => document.getElementById(id).value);
+
+    // Check if any of the grades is empty
+    if (grades.some(grade => !grade)) {
+        alert("Please select grades for all subjects.");
+        return;
+    }
 
     const gradePoints = calculateGradePoints(grades);
 
     const totalPoints = agePoints + countryPoints + gradePoints;
 
-    const resultMessage = totalPoints >= 180 ?
-        `Congratulations, ${firstName} ${lastName}! You have scored ${totalPoints} points and are eligible for the scholarship.` :
-        `Unfortunately, ${firstName} ${lastName}, you have only scored ${totalPoints} points and do not meet the scholarship criteria.`;
+    const resultMessage = `Result for ${firstName} ${lastName}:\n\n` +
+        `Age Points: ${agePoints}\n` +
+        `Country Points: ${countryPoints}\n` +
+        `Grade Points: ${gradePoints}\n` +
+        `Total Points: ${totalPoints}\n\n` +
+        (totalPoints >= 180 ?
+            `Congratulations! You are eligible for the scholarship.` :
+            `Unfortunately, you do not meet the scholarship criteria.`);
 
     alert(resultMessage);
 
     document.getElementById('result').textContent = resultMessage;
 }
+
+
+
+populateSubjects();
