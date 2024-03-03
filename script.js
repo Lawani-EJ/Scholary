@@ -80,7 +80,7 @@ function calculateGradePoints(subjects) {
     };
 
     const totalPoints = subjects.reduce((acc, subject) => {
-        const points = pointsMap[subject] || 0; // Default to 0 if the subject is not in the map
+        const points = pointsMap[subject] || 0;
         console.log(`Subject: ${subject}, Points: ${points}`);
         return acc + points;
     }, 0);
@@ -125,11 +125,9 @@ function submitForm(event) {
     const agePoints = getAgePoints(document.getElementById('age').value);
     const countryPoints = getCountryPoints(document.getElementById('country').value);
 
-    // Get grades
     const grades = ['englishGrade', 'mathGrade', 'physicsGrade', 'chemGrade', 'csGrade', 'bioGrade', 'agricGrade', 'civicGrade']
         .map(id => document.getElementById(id).value);
 
-    // Check if any of the grades is empty
     if (grades.some(grade => !grade)) {
         alert("Please select grades for all subjects.");
         return;
