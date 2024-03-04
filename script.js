@@ -116,7 +116,7 @@ function submitForm(event) {
     event.preventDefault();
 
     const isFormValid = ['firstName', 'lastName', 'phoneNumber', 'school', 'age', 'gender', 'country']
-        .every(id => validateField(id, `Please enter your ${id.replace(/([A-Z])/g, ' $1').toLowerCase()}.`));
+        .every(id => validateField(id, `Please Enter Your:  ${id.replace(/([A-Z])/g, ' $1').toLowerCase()}.`));
 
     if (!isFormValid) return;
 
@@ -132,7 +132,6 @@ function submitForm(event) {
         const errorMessage = "PLEASE SELECT THE GRADES FOR ALL SUBJECTS.";
         alert(errorMessage);
 
-        // Redirect to the error page with the error message
         window.location.href = `error.html?error=${encodeURIComponent(errorMessage)}&firstName=${encodeURIComponent(firstName)}&lastName=${encodeURIComponent(lastName)}`;
         return;
     }
