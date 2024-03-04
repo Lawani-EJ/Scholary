@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Page</title>
+        <link rel="shortcut icon" href="./diploma.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles3.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+</head>
+<body>
+           <header>
+        <h1>Sorry!</h1>
+    </header>
+
+    <section>
+        <p>
+            You did not meet the scholarship criteria in the application form.
+        </p>
+        
+        <p>
+            Please try again.
+        </p>
+    </section>
+</body>
+</html>
+
+
+    const resultMessage = `THE RESULTS FOR ${firstName} ${lastName}:\n\n` +
+        `YOUR AGE POINTS ARE: ${agePoints}\n` +
+        `YOUR COUNTRY POINTS ARE: ${countryPoints}\n` +
+        `YOUR GRADE POINTS ARE: ${gradePoints}\n` +
+        `YOUR TOTAL POINTS ARE: ${totalPoints}\n\n` +
+        (totalPoints >= 180 ?
+            `CONGRATULATIONS! YOU ARE ELIGIBLE FOR THE SCHOLARSHIP.` :
+            `UNFORTUNATELY, YOU DO NOT MEET THE SCHOLARSHIP CRITERIA.`);
+
+    alert(resultMessage);
