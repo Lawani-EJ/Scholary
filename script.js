@@ -129,14 +129,19 @@ function submitForm(event) {
         .map(id => document.getElementById(id).value);
 
     if (grades.some(grade => !grade)) {
-        alert("PLEASE SELECT THE GRADES FOR ALL SUBJECTS.");
+        const errorMessage = "PLEASE SELECT THE GRADES FOR ALL SUBJECTS.";
+        alert(errorMessage);
+
+        // Redirect to the error page with the error message
+        window.location.href = `error.html?error=${encodeURIComponent(errorMessage)}&firstName=${encodeURIComponent(firstName)}&lastName=${encodeURIComponent(lastName)}`;
         return;
     }
 
+    
     const gradePoints = calculateGradePoints(grades);
 
     const totalPoints = agePoints + countryPoints + gradePoints;
-
+    
     const resultMessage = `THE RESULTS FOR ${firstName} ${lastName}:\n\n` +
         `YOUR AGE POINTS ARE: ${agePoints}\n` +
         `YOUR COUNTRY POINTS ARE: ${countryPoints}\n` +
@@ -148,7 +153,13 @@ function submitForm(event) {
 
     alert(resultMessage);
 
-    document.getElementById('result').textContent = resultMessage;
+    if (totalPoints >= 180) {
+        window.location.href = 'success.html';
+    } else {
+        const errorMessage = `Unfortunately, ${firstName} ${lastName}, you did not meet the scholarship criteria.`;
+
+        window.location.href = `error.html?error=${encodeURIComponent(errorMessage)}&firstName=${encodeURIComponent(firstName)}&lastName=${encodeURIComponent(lastName)}`;
+    }
 }
 
 
