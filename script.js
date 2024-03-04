@@ -129,7 +129,7 @@ function submitForm(event) {
         .map(id => document.getElementById(id).value);
 
     if (grades.some(grade => !grade)) {
-        alert("Please select grades for all subjects.");
+        alert("PLEASE SELECT THE GRADES FOR ALL SUBJECTS.");
         return;
     }
 
@@ -137,14 +137,14 @@ function submitForm(event) {
 
     const totalPoints = agePoints + countryPoints + gradePoints;
 
-    const resultMessage = `Result for ${firstName} ${lastName}:\n\n` +
-        `Age Points: ${agePoints}\n` +
-        `Country Points: ${countryPoints}\n` +
-        `Grade Points: ${gradePoints}\n` +
-        `Total Points: ${totalPoints}\n\n` +
+    const resultMessage = `THE RESULTS FOR ${firstName} ${lastName}:\n\n` +
+        `YOUR AGE POINTS ARE: ${agePoints}\n` +
+        `YOUR COUNTRY POINTS ARE: ${countryPoints}\n` +
+        `YOUR GRADE POINTS ARE: ${gradePoints}\n` +
+        `YOUR TOTAL POINTS ARE: ${totalPoints}\n\n` +
         (totalPoints >= 180 ?
-            `Congratulations! You are eligible for the scholarship.` :
-            `Unfortunately, you do not meet the scholarship criteria.`);
+            `CONGRATULATIONS! YOU ARE ELIGIBLE FOR THE SCHOLARSHIP.` :
+            `UNFORTUNATELY, YOU DO NOT MEET THE SCHOLARSHIP CRITERIA.`);
 
     alert(resultMessage);
 
