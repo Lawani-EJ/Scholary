@@ -1,13 +1,13 @@
         body {
-            font-family: Arial, sans-serif;
+            font-family: "Noto Serif", serif;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background-color: #4e2b79;
+            background-color: #ffffff;
         }
-
+   
         header {
-            background-color: #83269a;
+            background-color: #7d8076f0;
             color: #fff;
             text-align: center;
             padding: 10px;
@@ -34,7 +34,6 @@
             padding: 10px;
             margin-bottom: 15px;
             box-sizing: border-box;
-            border-radius: 20px;
         }
 
         h1{
