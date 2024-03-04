@@ -59,6 +59,7 @@
 
         a.bn11:hover {
             border-color: rgb(255, 255, 255);
+            
         }    
 
         @media (max-width: 600px) {
